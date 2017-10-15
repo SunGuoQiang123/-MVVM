@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>sgq-vue</title>
+    <style media="screen">
+      #app{
+        text-align:center;
+      }
+      #nerd{
+        color:red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='app'>
+      <h2>{{title}}</h2>
+      <input v-model='name' />
+      <p>{{name}}</p>
+      <div v-bind:id="tag">
+        aasfasfasfsaf
+      </div>
+      <button type="button" name="button" v-on:click='changeId'>click me</button>
+    </div>
+  </body>
+  <script src='./Observe.js'></script>
+  <script src='./Watcher.js'></script>
+  <script src='./Compile.js'></script>
+  <script src='./index.js'></script>
+  <script type="text/javascript">
+    let vm = new Vue({
+      el:'#app',
+      data:{
+        title:'sgq-world',
+        name:'sunguoqiang',
+        tag:'nerd'
+      },
+      methods:{
+        changeId () {
+          console.log(this)
+          this.tag = 'bright'
+        }
+      },
+      mounted () {
+        setTimeout(() => {
+          this.title = '你好'
+        },2000)
+      }
+    })
+    window.setTimeout(() => {vm.title = 'bad day';vm.name = 'sss'},1000)
+  </script>
+</html>
